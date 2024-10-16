@@ -1,0 +1,162 @@
+local GameP = game.PlaceId
+local playerName = game.Players.LocalPlayer.Name
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "SeaBlue Hub", -- 
+    Text = "Hello " .. playerName .. "!", -- 
+    Icon = "rbxassetid://121986176267836" -- 
+})
+
+wait(0.5)
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "SeaBlue Hub", -- 
+    Text = "Checking Place Id..", -- 
+    Icon = "rbxassetid://121986176267836" -- 
+})
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+function Script()
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "SeaBlue Hub", -- Required
+        Text = "Game Supported", -- Required
+        Icon = "rbxassetid://121986176267836" -- Optional
+    })
+
+    local Window = Library.CreateLib("SeaBlue Hub 💧", "Ocean")
+
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Welcome " .. playerName .. "!")
+
+    MainSection:NewTextBox("Print", "Prints Anything You Put In The Textbox, Just for fun", function(txt)
+        print(txt)
+    end)
+
+    -- Walkspeed Slider
+    local walkSpeed = 16 -- Default Walkspeed
+    MainSection:NewSlider("Walkspeed", "Changes how fast you walk", 250, 16, function(s)
+        walkSpeed = s
+    end)
+
+    -- Start a coroutine to loop and update the walkspeed
+    coroutine.wrap(function()
+        while true do
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walkSpeed
+            wait(0.1) -- Update speed every 0.1 seconds
+        end
+    end)()
+
+    local MainSection = Main:NewSection("FUN STUFF")
+
+        -- Simon says counter Button
+    MainSection:NewButton("Counter troll", "Chats 'Simon says counter' when attacking an enemy and they counter.", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://freenote.biz/raw/7nvsfh8dsd'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    -- Custom Characters Section
+    local Customs = Window:NewTab("Custom Characters")
+    local CustomsSection = Customs:NewSection("My Custom Characters")
+
+    local SaitamaSection = Customs:NewSection("Saitama characters")
+
+    -- SpeedKicker Button
+    SaitamaSection:NewButton("SpeedKicker", "Fictional", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://pastebin.com/raw/6ZKJpHjg'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    -- Gojo Button
+    SaitamaSection:NewButton("Gojo", "Jujutsu Kaisen", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://pastebin.com/raw/GwwBFffL'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    -- Sukuna Button
+    SaitamaSection:NewButton("Sukuna", "Jujutsu Kaisen", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://pastebin.com/raw/ty1QLNY4'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    -- CG Button
+    SaitamaSection:NewButton("Combat God", "Combat God", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://freenote.biz/raw/vvihydqbpe'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    -- Neo Button
+    SaitamaSection:NewButton("Neo", "Matrix", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://freenote.biz/raw/7nvsfh8dsd'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    local GarouSection = Customs:NewSection("Garou characters")
+
+    -- KJ Button
+    GarouSection:NewButton("KJ REMAKE", "KJ REMAKE", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://pastebin.com/raw/TTdwwwZD'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    local AtomicSection = Customs:NewSection("Atomic characters")
+
+        -- Zoro Button
+    AtomicSection:NewButton("Zoro", "One Piece", function()
+        local scriptToLoad = loadstring(game:HttpGet('https://freenote.biz/raw/gtd4gdmszj'))()
+        if scriptToLoad then
+            scriptToLoad()
+        else
+            warn("Failed to load the script.")
+        end
+    end)
+
+    -- Other Custom Characters Section
+    local Othercustoms = Window:NewTab("Others Characters")
+    local OtherCustomsSection = Othercustoms:NewSection("Others Peoples Characters")
+
+end
+
+local function OtherGame()
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "SeaBlue Hub", -- 
+        Text = "Game not supported", -- 
+        Icon = "rbxassetid://121986176267836" --
+    })
+end
+
+wait(0.5)
+
+if game.PlaceId == 10449761463 then
+    Script()
+else
+    OtherGame()
+end
