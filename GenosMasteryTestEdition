@@ -1,0 +1,305 @@
+-- Function to handle animation detection and replacement
+local function handleAnimationDetection(animIdsToStop, replacementAnimId, animSpeed)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+
+    local function onAnimPlayed(animationTrack)
+        local animId = tonumber(string.match(animationTrack.Animation.AnimationId, "%d+"))
+        
+        for _, stopId in ipairs(animIdsToStop) do
+            if animId == stopId then
+                animationTrack:Stop()
+                local replacementAnimation = Instance.new("Animation")
+                replacementAnimation.AnimationId = "rbxassetid://" .. replacementAnimId
+                local replacementTrack = humanoid:LoadAnimation(replacementAnimation)
+                replacementTrack:Play()
+                replacementTrack:AdjustSpeed(animSpeed) -- Adjust the speed of the replacement animation
+                break
+            end
+        end
+    end
+    
+    humanoid.AnimationPlayed:Connect(onAnimPlayed)
+end
+
+-- First set of animations
+local firstAnimIdsToStop = {12534735382}
+local firstReplacementAnimId = 18181589384
+local firstAnimspeed = 1
+handleAnimationDetection(firstAnimIdsToStop, firstReplacementAnimId, firstAnimspeed)
+
+-- Second set of animations
+local secondAnimIdsToStop = {12509505723}
+local secondReplacementAnimId = 13497875049
+local secondAnimspeed = 1.4
+handleAnimationDetection(secondAnimIdsToStop, secondReplacementAnimId, secondAnimspeed)
+
+-- Third set of animations
+local thirdAnimIdsToStop = {12618271998}
+local thirdReplacementAnimId = 13499771836
+local thirdAnimspeed = 0.7
+handleAnimationDetection(thirdAnimIdsToStop, thirdReplacementAnimId, thirdAnimspeed)
+
+-- Fourth set of animations
+local fourthAnimIdsToStop = {12684390285}
+local fourthReplacementAnimId = 17857788598
+local fourthAnimspeed = 1
+handleAnimationDetection(fourthAnimIdsToStop, fourthReplacementAnimId, fourthAnimspeed)
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("1").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Flaming kicks"
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("2").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Fire Fist"
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("3").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Flame Blitz"
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("4").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Spectre"
+
+
+
+-- Function to handle animation detection and replacement
+local function handleAnimationDetection(animIdsToStop, replacementAnimId, animSpeed)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+
+    local function onAnimPlayed(animationTrack)
+        local animId = tonumber(string.match(animationTrack.Animation.AnimationId, "%d+"))
+        
+        for _, stopId in ipairs(animIdsToStop) do
+            if animId == stopId then
+                animationTrack:Stop()
+                local replacementAnimation = Instance.new("Animation")
+                replacementAnimation.AnimationId = "rbxassetid://" .. replacementAnimId
+                local replacementTrack = humanoid:LoadAnimation(replacementAnimation)
+                replacementTrack:Play()
+                replacementTrack:AdjustSpeed(animSpeed) -- Adjust the speed of the replacement animation
+                break
+            end
+        end
+    end
+    
+    humanoid.AnimationPlayed:Connect(onAnimPlayed)
+end
+
+-- First set of animations
+local firstAnimIdsToStop = {13047366862}
+local firstReplacementAnimId = 17857788598
+local firstAnimspeed = 1
+handleAnimationDetection(firstAnimIdsToStop, firstReplacementAnimId, firstAnimspeed)
+
+-- Second set of animations
+local secondAnimIdsToStop = {12832505612}
+local secondReplacementAnimId = 17838006839
+local secondAnimspeed = 0.5
+handleAnimationDetection(secondAnimIdsToStop, secondReplacementAnimId, secondAnimspeed)
+
+-- Third set of animations
+local thirdAnimIdsToStop = {13083332742}
+local thirdReplacementAnimId = 16515850153
+local thirdAnimspeed = 0.8
+handleAnimationDetection(thirdAnimIdsToStop, thirdReplacementAnimId, thirdAnimspeed)
+
+-- Fourth set of animations
+local fourthAnimIdsToStop = {13146710762}
+local fourthReplacementAnimId = 17861840167
+local fourthAnimspeed = 0.3
+handleAnimationDetection(fourthAnimIdsToStop, fourthReplacementAnimId, fourthAnimspeed)
+
+--Fourth set of animations
+local fourthAnimIdsToStop = {12772543293}
+local fourthReplacementAnimId = 18435303746
+local fourthAnimspeed = 1
+handleAnimationDetection(fourthAnimIdsToStop, fourthReplacementAnimId, fourthAnimspeed)
+
+-- Function to handle animation detection and replacement
+local function handleAnimationDetection(animIdsToStop, replacementAnimId, animSpeed)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+
+    local function onAnimPlayed(animationTrack)
+        local animId = tonumber(string.match(animationTrack.Animation.AnimationId, "%d+"))
+        
+        for _, stopId in ipairs(animIdsToStop) do
+            if animId == stopId then
+                animationTrack:Stop()
+                local replacementAnimation = Instance.new("Animation")
+                replacementAnimation.AnimationId = "rbxassetid://" .. replacementAnimId
+                local replacementTrack = humanoid:LoadAnimation(replacementAnimation)
+                replacementTrack:Play()
+                replacementTrack:AdjustSpeed(animSpeed) -- Adjust the speed of the replacement animation
+                break
+            end
+        end
+    end
+    
+    humanoid.AnimationPlayed:Connect(onAnimPlayed)
+end
+
+-- First set of animations
+local firstAnimIdsToStop = {13160158675}
+local firstReplacementAnimId = 15661624908
+local firstAnimspeed = 0.7
+handleAnimationDetection(firstAnimIdsToStop, firstReplacementAnimId, firstAnimspeed)
+
+-- Second set of animations
+local secondAnimIdsToStop = {13147719947}
+local secondReplacementAnimId = 13948501945
+local secondAnimspeed = 1
+handleAnimationDetection(secondAnimIdsToStop, secondReplacementAnimId, secondAnimspeed)
+
+-- Third set of animations
+local thirdAnimIdsToStop = {13079023611}
+local thirdReplacementAnimId = 16460009013
+local thirdAnimspeed = 1.5
+handleAnimationDetection(thirdAnimIdsToStop, thirdReplacementAnimId, thirdAnimspeed)
+
+-- Fourth set of animations
+local fourthAnimIdsToStop = {13159656146}
+local fourthReplacementAnimId = 14138253524
+local fourthAnimspeed = 1
+handleAnimationDetection(fourthAnimIdsToStop, fourthReplacementAnimId, fourthAnimspeed)
+
+-- ult set of animations
+local ultAnimIdsToStop = {13186381096}
+local ultReplacementAnimId = 18965893260
+local ultAnimspeed = 1
+handleAnimationDetection(ultAnimIdsToStop, ultReplacementAnimId, ultAnimspeed)
+
+--Fourth set of animations
+local fourthAnimIdsToStop = {10479335397}
+local fourthReplacementAnimId = 17838006839
+local fourthAnimspeed = 1
+handleAnimationDetection(fourthAnimIdsToStop, fourthReplacementAnimId, fourthAnimspeed)
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("5").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Sideway Smash"
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("6").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Speed Rush"
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("7").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Core Blast"
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("8").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Hell's Arrow"
+
+
+
