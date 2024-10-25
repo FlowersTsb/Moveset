@@ -178,7 +178,7 @@ local humanoid = character:WaitForChild("Humanoid")
 
 local function onAnimationPlayed(animationTrack)
 
-    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+    if animationTrack.Animation.AnimationId == "rbxassetid://10468665991" .. animationId then
 
 
 local p = game.Players.LocalPlayer
