@@ -200,7 +200,7 @@ AnimAnim.AnimationId = "rbxassetid://13560306510" -- the specific move ur gonna 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 0.1-- speed for the specific anim
+local startTime = 1.4-- speed for the specific anim
 
 
 Anim:Play()
