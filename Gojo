@@ -437,7 +437,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(1.2)
+Anim:AdjustSpeed(1.12)
 
 
     end
@@ -766,7 +766,7 @@ local replacementAnimations = {
 
     ["10469493270"] = "rbxassetid://18896124320", -- 4th m1's dont change the [12345678910] change the rbxassetid://123..
 
-    ["10469630950"] = "rbxassetid://18715998497",  -- 3rd m1's dont change the [12345678910] change the rbxassetid://123..
+    ["10469630950"] = "rbxassetid://13532600125",  -- 3rd m1's dont change the [12345678910] change the rbxassetid://123..
 
     ["10469639222"] = "rbxassetid://18715817240", -- 2nd m1's dont change the [12345678910] change the rbxassetid://123..
 
