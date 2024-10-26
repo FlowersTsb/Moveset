@@ -195,7 +195,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://12534735382" -- the specific move ur gonna replace
+AnimAnim.AnimationId = "rbxassetid://13560306510" -- the specific move ur gonna replace
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
