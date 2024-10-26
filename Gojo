@@ -428,7 +428,7 @@ AnimAnim.AnimationId = "rbxassetid://18903642853" -- the specific anim
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 0.05 -- speed for the specific anim
+local startTime = 1.2-- speed for the specific anim
 
 
 Anim:Play()
@@ -437,7 +437,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.7)
+Anim:AdjustSpeed(1.2)
 
 
     end
@@ -492,7 +492,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.2)
+Anim:AdjustSpeed(1.1)
 
 
     end
@@ -764,13 +764,13 @@ local animationIdsToStop = {
 
 local replacementAnimations = {
 
-    ["18896124320"] = "rbxassetid://18715820628", -- 4th m1's dont change the [12345678910] change the rbxassetid://123..
+    ["18715820628"] = "rbxassetid://18896124320", -- 4th m1's dont change the [12345678910] change the rbxassetid://123..
 
-    ["18715817240"] = "rbxassetid://18715818827",  -- 3rd m1's dont change the [12345678910] change the rbxassetid://123..
+    ["18715818827"] = "rbxassetid://18715817240",  -- 3rd m1's dont change the [12345678910] change the rbxassetid://123..
 
-    ["18715998497"] = "rbxassetid://18715817240", -- 2nd m1's dont change the [12345678910] change the rbxassetid://123..
+    ["18715817240"] = "rbxassetid://18715998497", -- 2nd m1's dont change the [12345678910] change the rbxassetid://123..
 
-    ["18715994424"] = "rbxassetid://18715812734", -- 1st m1's dont change the [12345678910] change the rbxassetid://123..
+    ["18715812734"] = "rbxassetid://18715994424", -- 1st m1's dont change the [12345678910] change the rbxassetid://123..
 
 }
 
