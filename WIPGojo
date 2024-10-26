@@ -15,7 +15,7 @@ local baseButton = hotbarFrame:FindFirstChild("1").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Repel" -- put the name of the base move 1
+ToolName.Text = "Repel: Reversal" -- put the name of the base move 1
 
 
 local player = game.Players.LocalPlayer
@@ -33,7 +33,7 @@ local baseButton = hotbarFrame:FindFirstChild("2").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Limitless" -- put the name of the base move 2
+ToolName.Text = "Attraction: Beatdown" -- put the name of the base move 2
 
 
 local player = game.Players.LocalPlayer
@@ -51,7 +51,7 @@ local baseButton = hotbarFrame:FindFirstChild("3").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Anti-Repel" -- put the name of the base move 3
+ToolName.Text = "Attraction: Blast" -- put the name of the base move 3
 
 
 local player = game.Players.LocalPlayer
@@ -69,7 +69,7 @@ local baseButton = hotbarFrame:FindFirstChild("4").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Jujutsu" -- put the name of the base move 4
+ToolName.Text = "Backhand" -- put the name of the base move 4
 
 
 local Players = game:GetService("Players")
@@ -110,7 +110,7 @@ playerGui.DescendantAdded:Connect(findGuiAndSetText)
 findGuiAndSetText()
 
 
-local animationId = 10468665991 -- the anim that will get track
+local animationId = 12618271998 -- the anim that will get track
 
 
 local player = game.Players.LocalPlayer
@@ -122,7 +122,7 @@ local humanoid = character:WaitForChild("Humanoid")
 
 local function onAnimationPlayed(animationTrack)
 
-    if animationTrack.Animation.AnimationId == "rbxassetid://10468665991" .. animationId then
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
 
 
 local p = game.Players.LocalPlayer
@@ -139,7 +139,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "13073745835" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://13603396939" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -534,7 +534,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://17292549897" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://18435303746" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
