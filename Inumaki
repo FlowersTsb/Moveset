@@ -993,7 +993,7 @@ local tool = Instance.new("Tool")
                 v:Destroy()
             end
      local tool = Instance.new("Tool")
-    tool.Name = "Run Away"
+    tool.Name = "Run Tool"
 
     tool.Parent = game.Players.LocalPlayer.Backpack
     tool.RequiresHandle = false
