@@ -51,7 +51,7 @@ local baseButton = hotbarFrame:FindFirstChild("3").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Backhand" -- put the name of the base move 3
+ToolName.Text = "STOP!" -- put the name of the base move 3
 
 
 local player = game.Players.LocalPlayer
@@ -252,12 +252,12 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://13294790250" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://12463072679" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 0.5 -- speed for specific anim
+local startTime = 0-- speed for specific anim
 
 
 Anim:Play()
