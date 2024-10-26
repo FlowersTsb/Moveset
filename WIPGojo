@@ -166,7 +166,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 10466974800 -- the move that it will track
+local animationId = 18715831781 -- the move that it will track
 
 
 local player = game.Players.LocalPlayer
@@ -195,12 +195,12 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://13560306510" -- the specific move ur gonna replace
+AnimAnim.AnimationId = "rbxassetid://" -- the specific move ur gonna replace
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 0 -- speed for the specific anim
+local startTime = 0.1-- speed for the specific anim
 
 
 Anim:Play()
