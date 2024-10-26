@@ -925,3 +925,4 @@ player.CharacterAdded:Connect(function(newCharacter)
     end
 
 end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/Sprint"))() 
