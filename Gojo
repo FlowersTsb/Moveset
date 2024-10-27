@@ -732,6 +732,7 @@ Anim:AdjustSpeed(1)
 end
 
 -- end of downslam
+
 -- Table Flip
 
 local animationId = 11365563255 -- the anim will get track
@@ -762,7 +763,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://15125307874" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://15121659862" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -776,7 +777,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.7)
+Anim:AdjustSpeed(0.8)
 
 
     end
