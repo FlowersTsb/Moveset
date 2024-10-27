@@ -784,6 +784,8 @@ Anim:AdjustSpeed(0.6)
 
 end
 
+-- end of table flip
+
 -- Omni directional punch
 
 local animationId = 13927612951 -- the anim will get track
