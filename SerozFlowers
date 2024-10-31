@@ -950,3 +950,100 @@ tool.Activated:Connect(function()
     local animationTrack = humanoid:LoadAnimation(animation)
     animationTrack:Play()
 end)
+
+--[[ ult name changer made by Owner of Aztech ]]
+-- // DEATH COUNTER //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("Death Counter") or player.Character:FindFirstChild("Table Flip")
+
+    if tool then
+        tool.Name = "?" -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "Death Counter" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
+
+-- // SERIOUS PUNCH //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("Serious Punch") or player.Character:FindFirstChild("Table Flip")
+
+    if tool then
+        tool.Name = "It's Over..." -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "Serious Punch" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
+
+-- // TABLE FLIP //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("Table Flip") or player.Character:FindFirstChild("Table Flip")
+
+    if tool then
+        tool.Name = "Planet Destroyer" -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "Table Flip" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
+
+-- // OMNI DIRECTIONAL PUNCH //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("Omni Directional Punch") or player.Character:FindFirstChild("Table Flip")
+
+    if tool then
+        tool.Name = "?" -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "Omni Directional Punch" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
