@@ -51,7 +51,7 @@ local baseButton = hotbarFrame:FindFirstChild("3").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "HEAVENLY://IMPACT" -- put the name of the base move 3
+ToolName.Text = "SWIFT://SWEEP" -- put the name of the base move 3
 
 
 local player = game.Players.LocalPlayer
