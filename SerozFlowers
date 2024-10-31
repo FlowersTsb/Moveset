@@ -674,7 +674,8 @@ Anim:AdjustSpeed(1)
 end
 
 -- end of mini upper cut
-local animationId =  -- the anim will get track
+
+local animationId = 13927612951 -- the anim will get track
 
 
 local player = game.Players.LocalPlayer
@@ -702,7 +703,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://18715770173" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -716,7 +717,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.3)
+Anim:AdjustSpeed(1.4)
 
 
     end
