@@ -331,7 +331,7 @@ Anim.TimePosition = startTime
 
 Anim:AdjustSpeed(1)
 
-delay(1.8, function()
+delay(1.6, function()
 
     Anim:Stop()
 
