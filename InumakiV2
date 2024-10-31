@@ -925,3 +925,51 @@ player.CharacterAdded:Connect(function(newCharacter)
     end
 
 end)
+
+--[[Adding Quote or Message when Executed]]
+ 
+local player = game.Players.LocalPlayer
+repeat wait() until player.Character
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+ 
+-- Messages to send
+local messages = {"Run Away."}
+ 
+local function sendMessage(text)
+    ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(text, "All")
+end
+ 
+for _, message in ipairs(messages) do
+    sendMessage(message)
+    wait(1.7) -- Wait time for each message
+end
+ 
+--[[END OF QUOTES]]
+ 
+--[[Execute Anims (Animations when you execute script]]
+ 
+local p = game.Players.LocalPlayer
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+    animTrack:Stop()
+end
+ 
+local AnimAnim = Instance.new("Animation")
+AnimAnim.AnimationId = "rbxassetid://15334974550" -- Replace with your animation ID
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+local startTime = 0
+ 
+Anim:Play()
+Anim:AdjustSpeed(0)
+Anim.TimePosition = startTime
+Anim:AdjustSpeed(1)
+ 
+--[[END OF EXECUTE ANIMS]]
+ 
+ 
+ 
