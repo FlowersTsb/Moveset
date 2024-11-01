@@ -981,7 +981,7 @@ local function detectAndRenameTool()
     local tool = player.Backpack:FindFirstChild("Death Counter") or player.Character:FindFirstChild("Table Flip")
 
     if tool then
-        tool.Name = "TWIST -- Change the ult name
+        tool.Name = "TWIST" -- Change the ult name
     end
 end
 
