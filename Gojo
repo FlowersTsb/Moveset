@@ -1003,6 +1003,31 @@ tool.Activated:Connect(function()
     animationTrack:Play()
 end)
 
+local tool = Instance.new("Tool")
+tool.Name = "Limit Breaker: Repel"
+tool.RequiresHandle = false
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+print("")
+
+local animationId = "rbxassetid://15020965094"
+
+tool.Activated:Connect(function()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+    
+    local mouse = player:GetMouse()
+    local targetPosition = mouse.Hit.p
+    rootPart.CFrame = CFrame.new(targetPosition)
+
+    local animation = Instance.new("Animation")
+    animation.AnimationId = animationId
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+end)
+
 --[[ ult name changer made by Owner of Aztech ]]
 -- // DEATH COUNTER //
 local player = game.Players.LocalPlayer
