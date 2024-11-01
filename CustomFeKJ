@@ -787,7 +787,7 @@ end
 
 -- end of downslam
 
-local animationId = 11365563255 -- the anim will get track
+local animationId = 13927612951 -- the anim will get track
 
 
 local player = game.Players.LocalPlayer
@@ -815,7 +815,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://12983333733" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
