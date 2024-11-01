@@ -1,0 +1,79 @@
+local tool = Instance.new("Tool")
+tool.Name = "Shadow Step"
+
+local handle = Instance.new("Part")
+handle.Name = "Handle"
+handle.Transparency = 1
+handle.CanCollide = false
+handle.Parent = tool
+
+local soundId = "rbxassetid://15956555583" -- Place your sound ID here
+local sound = Instance.new("Sound")
+sound.SoundId = soundId
+sound.Parent = tool
+
+local animId = "rbxassetid://15334974550 " -- Change this to your animation asset ID
+
+local function findClosestPlayer()
+    local localPlayer = game.Players.LocalPlayer
+    local character = localPlayer.Character
+    if not character then return nil end
+
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+    local closestPlayer = nil
+    local shortestDistance = math.huge
+
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player ~= localPlayer and player.Character then
+            local targetRoot = player.Character:FindFirstChild("HumanoidRootPart")
+            if targetRoot then
+                local distance = (rootPart.Position - targetRoot.Position).Magnitude
+                if distance < shortestDistance then
+                    shortestDistance = distance
+                    closestPlayer = player
+                end
+            end
+        end
+    end
+
+    return closestPlayer
+end
+
+local function onEquipped()
+    local character = game.Players.LocalPlayer.Character
+    if character then
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        -- Play the animation
+        local animation = Instance.new("Animation")
+        animation.AnimationId = animId
+        local animTrack = humanoid:LoadAnimation(animation)
+        animTrack:Play()
+
+        -- Find the nearest player
+        local closestPlayer = findClosestPlayer()
+        if closestPlayer and closestPlayer.Character then
+            local targetRoot = closestPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if targetRoot then
+                local backwardDirection = -targetRoot.CFrame.LookVector
+                local newPosition = targetRoot.Position + backwardDirection * 5 -- 5 studs behind the player
+                rootPart.CFrame = CFrame.new(newPosition)
+
+                -- Play the sound when the teleport happens
+                sound:Play()
+            end
+        end
+    end
+end
+
+-- Connect the equipped event to teleport
+tool.Equipped:Connect(onEquipped)
+
+-- Handle sound stopping when unequipped
+tool.Unequipped:Connect(function()
+    sound:Stop()
+end)
+
+-- Put the tool into the player's backpack
+tool.Parent = game.Players.LocalPlayer.Backpack  
