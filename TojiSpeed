@@ -1,0 +1,156 @@
+local tool = Instance.new("Tool")
+tool.Name = "Vanish" -- Name of your tool
+
+local handle = Instance.new("Part")
+handle.Name = "Handle"
+handle.Transparency = 1
+handle.CanCollide = false
+handle.Parent = tool
+
+local soundId = "rbxassetid://18181263808" -- Sound ID (must be a valid sound ID)
+local sound = Instance.new("Sound")
+sound.SoundId = soundId
+sound.Parent = tool
+
+local animationId = "rbxassetid://18435383478" -- Animation ID (must be a valid animation ID)
+
+local startime = 0 -- Cooldown time in seconds
+local canUseTool = true -- Flag to check if the tool can be used
+local cooldownText = "COOLDOWN" -- Text to display during cooldown
+local teleportDelay = 0 -- Delay before teleporting in seconds
+local startAnimationDelay = 0 -- Delay before starting the animation in seconds
+local startAnimationTime = 0 -- Start time of the animation in seconds
+
+local function onEquipped()
+    if not canUseTool then
+        print(Cooldown) -- Print the cooldown text
+        return
+    end
+
+    local character = game.Players.LocalPlayer.Character
+    if character then
+        canUseTool = false -- Disable tool usage
+
+        local humanoid = character:WaitForChild("Humanoid")
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        rootPart.Anchored = false -- Change to false if you do not want it to anchor
+
+        -- Delay before starting the animation
+        wait(startAnimationDelay)
+
+        local animation = Instance.new("Animation")
+        animation.AnimationId = animationId
+        local animationTrack = humanoid:LoadAnimation(animation)
+        animationTrack:Play() -- Play the animation
+
+        -- Set the animation to start at the specified time
+        animationTrack.TimePosition = startAnimationTime
+        animationTrack:AdjustSpeed(1.7) -- Set animation speed
+
+        sound:Play() -- Play the sound
+
+        -- Delay before teleporting
+        wait(teleportDelay)
+
+        -- Teleport the player 40 studs away
+        local forwardDirection = rootPart.CFrame.LookVector
+        local newPosition = rootPart.Position + forwardDirection * 60
+        rootPart.CFrame = CFrame.new(newPosition)
+
+        -- Tool unequipped logic
+        tool.Unequipped:Connect(function()
+            print("Tool unequipped")
+        end)
+
+        -- Wait for the cooldown period before enabling the tool again
+        wait(startime)
+        canUseTool = true
+        print("Tool is ready to use again.")
+    end
+end
+
+tool.Equipped:Connect(onEquipped)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Shadow Step"
+
+local handle = Instance.new("Part")
+handle.Name = "Handle"
+handle.Transparency = 1
+handle.CanCollide = false
+handle.Parent = tool
+
+local soundId = "rbxassetid://15956555583" -- Place your sound ID here
+local sound = Instance.new("Sound")
+sound.SoundId = soundId
+sound.Parent = tool
+
+local animId = "rbxassetid://15334974550 " -- Change this to your animation asset ID
+
+local function findClosestPlayer()
+    local localPlayer = game.Players.LocalPlayer
+    local character = localPlayer.Character
+    if not character then return nil end
+
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+    local closestPlayer = nil
+    local shortestDistance = math.huge
+
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player ~= localPlayer and player.Character then
+            local targetRoot = player.Character:FindFirstChild("HumanoidRootPart")
+            if targetRoot then
+                local distance = (rootPart.Position - targetRoot.Position).Magnitude
+                if distance < shortestDistance then
+                    shortestDistance = distance
+                    closestPlayer = player
+                end
+            end
+        end
+    end
+
+    return closestPlayer
+end
+
+local function onEquipped()
+    local character = game.Players.LocalPlayer.Character
+    if character then
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        -- Play the animation
+        local animation = Instance.new("Animation")
+        animation.AnimationId = animId
+        local animTrack = humanoid:LoadAnimation(animation)
+        animTrack:Play()
+
+        -- Find the nearest player
+        local closestPlayer = findClosestPlayer()
+        if closestPlayer and closestPlayer.Character then
+            local targetRoot = closestPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if targetRoot then
+                local backwardDirection = -targetRoot.CFrame.LookVector
+                local newPosition = targetRoot.Position + backwardDirection * 5 -- 5 studs behind the player
+                rootPart.CFrame = CFrame.new(newPosition)
+
+                -- Play the sound when the teleport happens
+                sound:Play()
+            end
+        end
+    end
+end
+
+-- Connect the equipped event to teleport
+tool.Equipped:Connect(onEquipped)
+
+-- Handle sound stopping when unequipped
+tool.Unequipped:Connect(function()
+    sound:Stop()
+end)
+
+-- Put the tool into the player's backpack
+tool.Parent = game.Players.LocalPlayer.Backpack 
+
