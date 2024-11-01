@@ -1099,3 +1099,58 @@ player.Backpack.ChildAdded:Connect(function(child)
 end)
 
 detectAndRenameTool()
+
+-- Services
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+-- Local Player
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- GUI and color adjustment function
+local function updateBarColor()
+    -- Find the ScreenGui on the screen
+    local screenGui = playerGui:FindFirstChild("ScreenGui")
+    if not screenGui then return end
+
+    -- Find the MagicHealth Frame
+    local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+    if not magicHealthFrame then return end
+
+    -- Find the Health Frame
+    local healthFrame = magicHealthFrame:FindFirstChild("Health")
+    if not healthFrame then return end
+
+    -- Find the Bar Frame
+    local barFrame = healthFrame:FindFirstChild("Bar")
+    if not barFrame then return end
+
+    -- Find the ImageLabel with ImageColor3 property inside the Bar Frame
+    local imageLabel = barFrame:FindFirstChild("Bar")
+    if not imageLabel or not imageLabel:IsA("ImageLabel") then return end
+
+    -- Set the color
+    imageLabel.ImageColor3 = Color3.fromRGB(0, 255, 255)
+end
+
+-- Check the GUI again when the character resets
+local function onCharacterAdded(character)
+    -- Update the GUI
+    updateBarColor()
+end
+
+-- Check the local player's character
+local function onPlayerAdded()
+    local character = player.Character or player.CharacterAdded:Wait()
+    onCharacterAdded(character)
+
+    -- Check again when the character changes
+    player.CharacterAdded:Connect(onCharacterAdded)
+end
+
+-- Check when the player is added
+Players.PlayerAdded:Connect(onPlayerAdded)
+if player then
+    onPlayerAdded()
+end
