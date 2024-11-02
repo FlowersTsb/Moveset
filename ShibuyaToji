@@ -478,12 +478,12 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://13073745835" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://17278415853" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 0 -- speed of specific anim
+local startTime = 1-- speed of specific anim
 
 
 Anim:Play()
@@ -492,7 +492,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.2)
+Anim:AdjustSpeed(0.9)
 
 
     end
@@ -1103,3 +1103,9 @@ Players.PlayerAdded:Connect(onPlayerAdded)
 if player then
     onPlayerAdded()
 end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/Vanish"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/ShadowStep"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/BlinkOfDeath"))()
