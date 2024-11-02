@@ -1040,7 +1040,7 @@ end
  
 for _, message in ipairs(messages) do
     sendMessage(message)
-    wait(0.4) -- Wait time for each message
+    wait(1.5) -- Wait time for each message
 end
  
 --[[END OF QUOTES]]
@@ -1059,12 +1059,12 @@ AnimAnim.AnimationId = "rbxassetid://17862992081" -- Replace with your animation
  
 local Anim = Humanoid:LoadAnimation(AnimAnim)
  
-local startTime = 
+local startTime = 0 
  
 Anim:Play()
 Anim:AdjustSpeed(0)
 Anim.TimePosition = startTime
-Anim:AdjustSpeed(1)
+Anim:AdjustSpeed(0.9)
  
 --[[END OF EXECUTE ANIMS]]
  
