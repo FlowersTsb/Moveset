@@ -1023,28 +1023,6 @@ end)
 
 detectAndRenameTool()
 
---[[Adding Quote or Message when Executed]]
- 
-local player = game.Players.LocalPlayer
-repeat wait() until player.Character
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
- 
--- Messages to send
-local messages = {"With This Treasure...", "I Summon..", "Eight Handled Sword Divergent Sila Divine General..", "Mahoraga."}
- 
-local function sendMessage(text)
-    ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(text, "All")
-end
- 
-for _, message in ipairs(messages) do
-    sendMessage(message)
-    wait(1.5) -- Wait time for each message
-end
- 
---[[END OF QUOTES]]
- 
 --[[Execute Anims (Animations when you execute script]]
  
 local p = game.Players.LocalPlayer
@@ -1067,6 +1045,28 @@ Anim.TimePosition = startTime
 Anim:AdjustSpeed(1)
  
 --[[END OF EXECUTE ANIMS]]
+
+--[[Adding Quote or Message when Executed]]
+ 
+local player = game.Players.LocalPlayer
+repeat wait() until player.Character
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+ 
+-- Messages to send
+local messages = {"With This Treasure...", "I Summon..", "Eight Handled Sword Divergent Sila Divine General..", "Mahoraga."}
+ 
+local function sendMessage(text)
+    ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(text, "All")
+end
+ 
+for _, message in ipairs(messages) do
+    sendMessage(message)
+    wait(1.5) -- Wait time for each message
+end
+ 
+--[[END OF QUOTES]]
  
  
  
