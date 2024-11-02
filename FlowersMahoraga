@@ -1064,7 +1064,7 @@ local startTime = 0
 Anim:Play()
 Anim:AdjustSpeed(0)
 Anim.TimePosition = startTime
-Anim:AdjustSpeed(0.9)
+Anim:AdjustSpeed(1.3)
  
 --[[END OF EXECUTE ANIMS]]
  
