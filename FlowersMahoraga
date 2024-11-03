@@ -1006,7 +1006,7 @@ local function detectAndRenameTool()
     local tool = player.Backpack:FindFirstChild("Omni Directional Punch") or player.Character:FindFirstChild("Table Flip")
 
     if tool then
-        tool.Name = "?" -- Change the ult name
+        tool.Name = "Specialized Speed blitzing Slashes" -- Change the ult name
     end
 end
 
