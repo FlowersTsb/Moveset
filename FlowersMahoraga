@@ -69,7 +69,7 @@ local baseButton = hotbarFrame:FindFirstChild("4").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "World Cutting Uppercut" -- put the name of the base move 4
+ToolName.Text = "Skull Breaker" -- put the name of the base move 4
 
 
 local Players = game:GetService("Players")
@@ -315,12 +315,12 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://18464372850" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://18179181663" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 2 -- the speed for the specific anim
+local startTime = 0 -- the speed for the specific anim
 
 
 Anim:Play()
