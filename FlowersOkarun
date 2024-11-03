@@ -1209,7 +1209,7 @@ tool.Parent = game.Players.LocalPlayer.Backpack
 
 print("")
 
-local animationId = "rbxassetid://18717022527"
+local animationId = "rbxassetid://15957361339"
 
 tool.Activated:Connect(function()
     local player = game.Players.LocalPlayer
