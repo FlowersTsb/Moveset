@@ -1125,3 +1125,104 @@ Anim:AdjustSpeed(1)
  
  
  
+
+local tool = Instance.new("Tool")
+tool.Name = "Speedblitz Vanish" -- Name of your tool
+
+local handle = Instance.new("Part")
+handle.Name = "Handle"
+handle.Transparency = 1
+handle.CanCollide = false
+handle.Parent = tool
+
+local soundId = "rbxassetid://18181263808" -- Sound ID (must be a valid sound ID)
+local sound = Instance.new("Sound")
+sound.SoundId = soundId
+sound.Parent = tool
+
+local animationId = "rbxassetid://18435383478" -- Animation ID (must be a valid animation ID)
+
+local startime = 0 -- Cooldown time in seconds
+local canUseTool = true -- Flag to check if the tool can be used
+local cooldownText = "COOLDOWN" -- Text to display during cooldown
+local teleportDelay = 0 -- Delay before teleporting in seconds
+local startAnimationDelay = 0 -- Delay before starting the animation in seconds
+local startAnimationTime = 0 -- Start time of the animation in seconds
+
+local function onEquipped()
+    if not canUseTool then
+        print(Cooldown) -- Print the cooldown text
+        return
+    end
+
+    local character = game.Players.LocalPlayer.Character
+    if character then
+        canUseTool = false -- Disable tool usage
+
+        local humanoid = character:WaitForChild("Humanoid")
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        rootPart.Anchored = false -- Change to false if you do not want it to anchor
+
+        -- Delay before starting the animation
+        wait(startAnimationDelay)
+
+        local animation = Instance.new("Animation")
+        animation.AnimationId = animationId
+        local animationTrack = humanoid:LoadAnimation(animation)
+        animationTrack:Play() -- Play the animation
+
+        -- Set the animation to start at the specified time
+        animationTrack.TimePosition = startAnimationTime
+        animationTrack:AdjustSpeed(1.7) -- Set animation speed
+
+        sound:Play() -- Play the sound
+
+        -- Delay before teleporting
+        wait(teleportDelay)
+
+        -- Teleport the player 40 studs away
+        local forwardDirection = rootPart.CFrame.LookVector
+        local newPosition = rootPart.Position + forwardDirection * 60
+        rootPart.CFrame = CFrame.new(newPosition)
+
+        -- Tool unequipped logic
+        tool.Unequipped:Connect(function()
+            print("Tool unequipped")
+        end)
+
+        -- Wait for the cooldown period before enabling the tool again
+        wait(startime)
+        canUseTool = true
+        print("Tool is ready to use again.")
+    end
+end
+
+tool.Equipped:Connect(onEquipped)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Invisible Speed"
+tool.RequiresHandle = false
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+print("")
+
+local animationId = "rbxassetid://18717022527"
+
+tool.Activated:Connect(function()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+    
+    local mouse = player:GetMouse()
+    local targetPosition = mouse.Hit.p
+    rootPart.CFrame = CFrame.new(targetPosition)
+
+    local animation = Instance.new("Animation")
+    animation.AnimationId = animationId
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+end)
