@@ -768,7 +768,7 @@ local replacementAnimations = {
 
     ["10469639222"] = "rbxassetid://17889471098",  -- 3rd m1's dont change the [12345678910] change the rbxassetid://123..
 
-    ["10469630950"] = "rbxassetid://17889461810", -- 2nd m1's dont change the [12345678910] change the rbxassetid://123..
+    ["10469630950"] = "rbxassetid://10469630950", -- 2nd m1's dont change the [12345678910] change the rbxassetid://123..
 
     ["10469493270"] = "rbxassetid://17889458563", -- 1st m1's dont change the [12345678910] change the rbxassetid://123..
 
