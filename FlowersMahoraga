@@ -764,9 +764,9 @@ local animationIdsToStop = {
 
 local replacementAnimations = {
 
-    ["10469643643"] = "rbxassetid://17889290569", -- 4th m1's dont change the [12345678910] change the rbxassetid://123..
+    ["10469643643"] = "rbxassetid://12296882427", -- 4th m1's dont change the [12345678910] change the rbxassetid://123..
 
-    ["10469639222"] = "rbxassetid://17889471098",  -- 3rd m1's dont change the [12345678910] change the rbxassetid://123..
+    ["10469639222"] = "rbxassetid://13532600125",  -- 3rd m1's dont change the [12345678910] change the rbxassetid://123..
 
     ["10469630950"] = "rbxassetid://10469630950", -- 2nd m1's dont change the [12345678910] change the rbxassetid://123..
 
