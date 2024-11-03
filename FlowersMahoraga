@@ -15,7 +15,7 @@ local baseButton = hotbarFrame:FindFirstChild("1").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Divine Heaven Breaker" -- put the name of the base move 1
+ToolName.Text = "Divine Wind Blast" -- put the name of the base move 1
 
 
 local player = game.Players.LocalPlayer
