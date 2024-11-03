@@ -15,7 +15,7 @@ local baseButton = hotbarFrame:FindFirstChild("1").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "?" -- put the name of the base move 1
+ToolName.Text = "Divine Heaven Breaker" -- put the name of the base move 1
 
 
 local player = game.Players.LocalPlayer
@@ -33,7 +33,7 @@ local baseButton = hotbarFrame:FindFirstChild("2").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "?" -- put the name of the base move 2
+ToolName.Text = "Adaptation Beatdown" -- put the name of the base move 2
 
 
 local player = game.Players.LocalPlayer
@@ -51,7 +51,7 @@ local baseButton = hotbarFrame:FindFirstChild("3").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "?" -- put the name of the base move 3
+ToolName.Text = "Heaven's Shove" -- put the name of the base move 3
 
 
 local player = game.Players.LocalPlayer
@@ -69,7 +69,7 @@ local baseButton = hotbarFrame:FindFirstChild("4").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "?" -- put the name of the base move 4
+ToolName.Text = "World Cutting Uppercut" -- put the name of the base move 4
 
 
 local Players = game:GetService("Players")
@@ -93,7 +93,7 @@ local function findGuiAndSetText()
 
             if textLabel then
 
-                textLabel.Text = "?" -- put the name of the ult name ultimate text
+                textLabel.Text = "SHIKIGAMI'S SOUL ESSENCE" -- put the name of the ult name ultimate text
 
             end
 
