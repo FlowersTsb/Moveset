@@ -1127,7 +1127,7 @@ Anim:AdjustSpeed(1)
  
 
 local tool = Instance.new("Tool")
-tool.Name = "Speedblitz Vanish" -- Name of your tool
+tool.Name = "Turbo Dash" -- Name of your tool
 
 local handle = Instance.new("Part")
 handle.Name = "Handle"
@@ -1203,7 +1203,7 @@ tool.Equipped:Connect(onEquipped)
 tool.Parent = game.Players.LocalPlayer.Backpack
 
 local tool = Instance.new("Tool")
-tool.Name = "Invisible Speed"
+tool.Name = "Vanishing Speed"
 tool.RequiresHandle = false
 tool.Parent = game.Players.LocalPlayer.Backpack
 
