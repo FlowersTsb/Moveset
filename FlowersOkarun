@@ -652,12 +652,12 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://17325160621" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 0 -- speed for the specific anim
+local startTime = 0.2-- speed for the specific anim
 
 
 Anim:Play()
@@ -666,7 +666,7 @@ Anim:AdjustSpeed(0.5)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(1)
+Anim:AdjustSpeed(0.7)
 
 
     end
