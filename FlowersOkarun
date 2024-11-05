@@ -1136,7 +1136,7 @@ handle.Transparency = 1
 handle.CanCollide = false
 handle.Parent = tool
 
-local soundId = "rbxassetid://18181263808" -- Sound ID (must be a valid sound ID)
+local soundId = "rbxassetid://18464356233" -- Sound ID (must be a valid sound ID)
 local sound = Instance.new("Sound")
 sound.SoundId = soundId
 sound.Parent = tool
@@ -1210,7 +1210,7 @@ tool.Parent = game.Players.LocalPlayer.Backpack
 
 print("")
 
-local animationId = "rbxassetid://15957361339"
+local animationId = "rbxassetid://18716164812"
 
 tool.Activated:Connect(function()
     local player = game.Players.LocalPlayer
