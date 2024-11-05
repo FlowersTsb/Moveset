@@ -371,12 +371,12 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://12983333733" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://18440406788" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 2 -- speed for specific anim
+local startTime = 0 -- speed for specific anim
 
 Anim:Play()
 
@@ -384,7 +384,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.5)
+Anim:AdjustSpeed(0.6)
 
 
     end
@@ -480,7 +480,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://13073745835" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://18896229321" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -494,7 +494,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.2)
+Anim:AdjustSpeed(1)
 
 
     end
@@ -662,7 +662,7 @@ local startTime = 0.2-- speed for the specific anim
 
 Anim:Play()
 
-Anim:AdjustSpeed(0.5)
+Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
@@ -1111,7 +1111,7 @@ for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
 end
  
 local AnimAnim = Instance.new("Animation")
-AnimAnim.AnimationId = "rbxassetid://18962792456" -- Replace with your animation ID
+AnimAnim.AnimationId = "rbxassetid://13047328208" -- Replace with your animation ID
  
 local Anim = Humanoid:LoadAnimation(AnimAnim)
  
