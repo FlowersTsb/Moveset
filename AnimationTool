@@ -4,13 +4,13 @@ local backpack = player:WaitForChild("Backpack")
 
 -- Create the tool
 local tool = Instance.new("Tool")
-tool.Name = "MyTool"
+tool.Name = "I'm You"
 tool.RequiresHandle = false
 tool.Parent = backpack
 
 -- Create the animation object and load it
 local animation = Instance.new("Animation")
-animation.AnimationId = "rbxassetid://YOUR_ANIMATION_ID"  -- Replace with your Animation ID
+animation.AnimationId = "rbxassetid://15962326593"  -- Replace with your Animation ID
 
 -- Function to play the animation
 local function playAnimation()
