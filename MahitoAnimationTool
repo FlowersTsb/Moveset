@@ -1,0 +1,47 @@
+-- Variables
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "I'm You (Mahito)"
+tool.RequiresHandle = false
+tool.Parent = backpack
+
+-- Create the animation object and load it
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://15958281277"  -- Replace with your Animation ID
+
+local animationTrack  -- Variable to store the tool's animation track
+local humanoid  -- Store the humanoid reference
+
+-- Function to play the animation and pause other animations
+local function playAnimation()
+    local character = player.Character or player.CharacterAdded:Wait()
+    humanoid = character:WaitForChild("Humanoid")
+
+    -- Stop other animations by setting the AnimationController's weight to 0 for all tracks except our tool's animation
+    for _, anim in pairs(humanoid:GetPlayingAnimationTracks()) do
+        anim:Stop()  -- Stop any currently playing animations
+    end
+
+    -- Play the tool's animation
+    animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+end
+
+-- Function to stop the tool animation and allow other animations
+local function stopAnimation()
+    if animationTrack and animationTrack.IsPlaying then
+        animationTrack:Stop()
+    end
+
+    -- Resume other animations or let Roblox's default animations play
+    humanoid:Move(Vector3.new(0,0,0))  -- Triggers the humanoid's default animation
+end
+
+-- Connect the playAnimation function to the tool's Activated event
+tool.Activated:Connect(playAnimation)
+
+-- Connect the stopAnimation function to the tool's Unequipped event
+tool.Unequipped:Connect(stopAnimation)
