@@ -12,13 +12,25 @@ tool.Parent = backpack
 local animation = Instance.new("Animation")
 animation.AnimationId = "rbxassetid://15962326593"  -- Replace with your Animation ID
 
+local animationTrack -- Variable to store the animation track so we can stop it later
+
 -- Function to play the animation
 local function playAnimation()
     local character = player.Character or player.CharacterAdded:Wait()
     local humanoid = character:WaitForChild("Humanoid")
-    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack = humanoid:LoadAnimation(animation)
     animationTrack:Play()
+end
+
+-- Function to stop the animation
+local function stopAnimation()
+    if animationTrack and animationTrack.IsPlaying then
+        animationTrack:Stop()
+    end
 end
 
 -- Connect the playAnimation function to the tool's Activated event
 tool.Activated:Connect(playAnimation)
+
+-- Connect the stopAnimation function to the tool's Unequipped event
+tool.Unequipped:Connect(stopAnimation)
