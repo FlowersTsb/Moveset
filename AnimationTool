@@ -1,0 +1,24 @@
+-- Variables
+local player = game.Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+
+-- Create the tool
+local tool = Instance.new("Tool")
+tool.Name = "MyTool"
+tool.RequiresHandle = false
+tool.Parent = backpack
+
+-- Create the animation object and load it
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://YOUR_ANIMATION_ID"  -- Replace with your Animation ID
+
+-- Function to play the animation
+local function playAnimation()
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+end
+
+-- Connect the playAnimation function to the tool's Activated event
+tool.Activated:Connect(playAnimation)
