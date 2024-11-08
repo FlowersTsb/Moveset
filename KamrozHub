@@ -74,3 +74,9 @@ end)
 Section:NewButton("ESP", "Good for hide and seek", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/7K1Jhmck",true))()
 end)
+
+-- button here
+
+Frame.Parent.Active = true
+
+Frame.Parent.Draggable = true
