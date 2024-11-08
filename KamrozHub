@@ -63,3 +63,14 @@ cornerUI.Parent = TextButton
     uiStroke.Color = Color3.new(0, 0, 0)
     uiStroke.Thickness = 2
     uiStroke.Parent = TextButton
+
+local Tab = Window:NewTab("Exploits")
+local Section = Tab:NewSection("Not Made By Me And Kaminari")
+
+Section:NewButton("Infinite Yield", "Famous Universal Script", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+Section:NewSlider("Set Speed", "My goals are beyond your understanding", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
