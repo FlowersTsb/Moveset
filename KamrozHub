@@ -71,3 +71,6 @@ Section:NewButton("Infinite Yield", "Famous Universal Script", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
+Section:NewButton("ESP", "Good for hide and seek", function()
+loadstring(game:HttpGet("https://pastebin.com/raw/7K1Jhmck",true))()
+end)
