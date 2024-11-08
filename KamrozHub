@@ -7,3 +7,11 @@ local Section = Tab:NewSection("By Kaminari And Seroz")
 Section:NewButton("Okarun", "no balls", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/FlowersOkarun"))()
 end)
+
+Section:NewButton("Seroz://Flowers", "me", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/SerozFlowers"))()
+end)
+
+Section:NewButton("Kaminari", "him", function()
+loadstring(game:HttpGet("https://pastefy.app/fqsjPG3k/raw"))()
+end)
