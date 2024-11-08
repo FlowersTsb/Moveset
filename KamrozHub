@@ -77,19 +77,7 @@ end)
 
 -- button here
 
-local player = game.Players.LocalPlayer
-
--- Slider with minimum set to 3
-Section:NewSlider("Player Speed", "Adjusts your walk speed", 500, 3, function(s)
-    player.Character.Humanoid.WalkSpeed = s
+Section:NewSlider("Set Player Speed", "how to become the flash.mp4", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
 
--- Continuously enforce the WalkSpeed
-game:GetService("RunService").RenderStepped:Connect(function()
-    if player.Character and player.Character:FindFirstChild("Humanoid") then
-        local humanoid = player.Character.Humanoid
-        if humanoid.WalkSpeed ~= s then
-            humanoid.WalkSpeed = s -- Continuously apply the speed from the slider
-        end
-    end
-end)
