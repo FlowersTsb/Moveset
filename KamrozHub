@@ -77,3 +77,9 @@ end)
 
 -- button here
 
+Section:NewSlider("Player Speed", "Adjusts your walk speed", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.WalkSpeed = s
+    end
+end)
