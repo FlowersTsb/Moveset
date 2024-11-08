@@ -1,0 +1,9 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Kamroz Hub", "Ocean")
+
+local Tab = Window:NewTab("Movesets")
+local Section = Tab:NewSection("By Kaminari And Seroz")
+
+Section:NewButton("Okarun", "no balls", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/FlowersOkarun"))()
+end)
