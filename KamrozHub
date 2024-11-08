@@ -77,10 +77,6 @@ end)
 
 -- button here
 
-Section:NewSlider("Set Player Speed", "how to become the flash.mp4", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
-end)
-
 Section:NewButton("No Stun", "when you genuinely tweaking so hard that you move out of a ultimate move", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/NoStun",true))()
 end)
