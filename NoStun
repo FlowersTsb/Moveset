@@ -1,0 +1,19 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+
+humanoid.WalkSpeed = 16 --speed u want
+
+
+local function NoStun()
+    if humanoid.WalkSpeed < 29 then --28 is sprint speed
+        humanoid.WalkSpeed = 16 --speed u want
+    end
+end
+
+
+humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(NoStun)
+
+NoStun()
