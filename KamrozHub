@@ -80,3 +80,7 @@ end)
 Section:NewButton("No Stun", "when you genuinely tweaking so hard that you move out of a ultimate move", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/NoStun",true))()
 end)
+
+Section:NewButton("No Cutscene", "pov: youre hanami seeing gojo use purple", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/NoCutscence",true))()
+end)
