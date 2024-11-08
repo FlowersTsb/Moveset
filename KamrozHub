@@ -16,6 +16,20 @@ Section:NewButton("Kaminari", "him", function()
 loadstring(game:HttpGet("https://pastefy.app/fqsjPG3k/raw"))()
 end)
 
+Section:NewButton("Teen Gojo", "epic time", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/Gojo"))()
+end)
+
+Section:NewButton("Inumaki", "explode your throat simulator", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/InumakiV2"))()
+end)
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "patrickGui"
+gui.Parent = game.CoreGui
+
+--screengui = gui
+
 
 
 	local TextButton = Instance.new("TextButton")
@@ -49,4 +63,3 @@ cornerUI.Parent = TextButton
     uiStroke.Color = Color3.new(0, 0, 0)
     uiStroke.Thickness = 2
     uiStroke.Parent = TextButton
-    
