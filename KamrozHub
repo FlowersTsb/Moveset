@@ -72,11 +72,8 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/
 end)
 
 Section:NewButton("ESP", "Good for hide and seek", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/7K1Jhmck",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/ESPTracers",true))()
 end)
 
 -- button here
 
-Frame.Parent.Active = true
-
-Frame.Parent.Draggable = true
