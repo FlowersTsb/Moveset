@@ -1,0 +1,114 @@
+-- Customizable Settings for Highlight
+local FillColor = Color3.fromRGB(175, 25, 255)
+local DepthMode = "AlwaysOnTop"
+local FillTransparency = 0.5
+local OutlineColor = Color3.fromRGB(255, 255, 255)
+local OutlineTransparency = 0
+
+local CoreGui = game:FindService("CoreGui")
+local Players = game:FindService("Players")
+local RunService = game:GetService("RunService")
+local lp = Players.LocalPlayer
+local connections = {}
+
+-- Storage for Highlights and Tracers
+local Storage = Instance.new("Folder")
+Storage.Parent = CoreGui
+Storage.Name = "ESP_Storage"
+
+local tracers = {}
+
+-- Function to create a tracer line
+local function createTracerLine()
+    local line = Drawing.new("Line")
+    line.Color = Color3.new(0, 0, 1) -- Blue color for tracers
+    line.Thickness = 2
+    line.Transparency = 1
+    return line
+end
+
+-- Function to add highlight and tracer to a player
+local function Highlight(plr)
+    -- Set up Highlight for player
+    local highlight = Instance.new("Highlight")
+    highlight.Name = plr.Name
+    highlight.FillColor = FillColor
+    highlight.DepthMode = DepthMode
+    highlight.FillTransparency = FillTransparency
+    highlight.OutlineColor = OutlineColor
+    highlight.OutlineTransparency = OutlineTransparency
+    highlight.Parent = Storage
+
+    -- Attach highlight to player character
+    local plrchar = plr.Character
+    if plrchar then
+        highlight.Adornee = plrchar
+    end
+
+    -- Update highlight adornee on character respawn
+    connections[plr] = plr.CharacterAdded:Connect(function(char)
+        highlight.Adornee = char
+    end)
+
+    -- Create a tracer line for this player
+    if not tracers[plr] then
+        tracers[plr] = createTracerLine()
+    end
+end
+
+-- Update tracers every frame
+local function updateTracers()
+    local camera = workspace.CurrentCamera
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= lp and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            local targetPosition = player.Character.HumanoidRootPart.Position
+            local screenPosition, onScreen = camera:WorldToViewportPoint(targetPosition)
+            
+            -- Get local player character position
+            if lp.Character and lp.Character:FindFirstChild("HumanoidRootPart") then
+                local localPosition = lp.Character.HumanoidRootPart.Position
+                local localScreenPosition = camera:WorldToViewportPoint(localPosition)
+                
+                -- Update tracer line for this player
+                local line = tracers[player]
+                line.Visible = onScreen
+                if onScreen then
+                    line.From = Vector2.new(localScreenPosition.X, localScreenPosition.Y)
+                    line.To = Vector2.new(screenPosition.X, screenPosition.Y)
+                end
+            end
+        elseif tracers[player] then
+            tracers[player].Visible = false
+        end
+    end
+end
+
+-- Remove tracers and highlights when players leave
+Players.PlayerRemoving:Connect(function(plr)
+    -- Destroy highlight
+    local plrname = plr.Name
+    if Storage[plrname] then
+        Storage[plrname]:Destroy()
+    end
+
+    -- Disconnect character connection
+    if connections[plr] then
+        connections[plr]:Disconnect()
+        connections[plr] = nil
+    end
+
+    -- Remove tracer line
+    if tracers[plr] then
+        tracers[plr]:Remove()
+        tracers[plr] = nil
+    end
+end)
+
+-- Connect functions to players
+Players.PlayerAdded:Connect(Highlight)
+for _, player in ipairs(Players:GetPlayers()) do
+    Highlight(player)
+end
+
+-- Run updateTracers every frame
+RunService.RenderStepped:Connect(updateTracers)
