@@ -553,11 +553,11 @@ Anim.TimePosition = startTime
 
 Anim:AdjustSpeed(1)
 
+local messages = {"I'm Drimming With Power.", "But I'm Totally Depressed."}
+    
     end
 
 end
-
-local messages = {"I'm Drimming With Power.", "But I'm Totally Depressed."}
 
 -- the end of ult anim
 
