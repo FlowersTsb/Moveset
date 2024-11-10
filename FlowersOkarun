@@ -537,7 +537,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://18435303746" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://15943926967" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -556,7 +556,25 @@ Anim:AdjustSpeed(1)
     end
 
 end
-
+ 
+local player = game.Players.LocalPlayer
+repeat wait() until player.Character
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+ 
+-- Messages to send
+local messages = {"This Is Amazing!", "I'm Drimming With Power.", "But I'm Totally Depressed."}
+ 
+local function sendMessage(text)
+    ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(text, "All")
+end
+ 
+for _, message in ipairs(messages) do
+    sendMessage(message)
+    wait(1.7) -- Wait time for each message
+end
+ 
 -- the end of ult anim
 
 -- front dash
@@ -808,9 +826,9 @@ local animationIdsToStop = {
 
     [10469493270] = true,
 
-    [10469630950] = true,
+    [10469630950] = false,
 
-    [10469639222] = true,
+    [10469639222] = false,
 
     [10469643643] = true,
 
@@ -1014,7 +1032,7 @@ local function detectAndRenameTool()
     local tool = player.Backpack:FindFirstChild("Serious Punch") or player.Character:FindFirstChild("Table Flip")
 
     if tool then
-        tool.Name = "100 Kilometer Rush" -- Change the ult name
+        tool.Name = "|**Savage Strikes**|" -- Change the ult name
     end
 end
 
@@ -1038,7 +1056,7 @@ local function detectAndRenameTool()
     local tool = player.Backpack:FindFirstChild("Table Flip") or player.Character:FindFirstChild("Table Flip")
 
     if tool then
-        tool.Name = "Man, I'm So Depressed" -- Change the ult name
+        tool.Name = "Blinking Town Destroyer" -- Change the ult name
     end
 end
 
@@ -1062,7 +1080,7 @@ local function detectAndRenameTool()
     local tool = player.Backpack:FindFirstChild("Omni Directional Punch") or player.Character:FindFirstChild("Table Flip")
 
     if tool then
-        tool.Name = "Speedblitz Duster" -- Change the ult name
+        tool.Name = "Starburst Dash" -- Change the ult name
     end
 end
 
