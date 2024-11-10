@@ -556,7 +556,9 @@ Anim:AdjustSpeed(1)
     end
 
 end
- 
+
+local messages = {"I'm Drimming With Power.", "But I'm Totally Depressed."}
+
 -- the end of ult anim
 
 -- front dash
