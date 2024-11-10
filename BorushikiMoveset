@@ -263,7 +263,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(1.9)
+Anim:AdjustSpeed(2.2)
 
 
     end
