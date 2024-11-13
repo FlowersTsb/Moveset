@@ -15,7 +15,7 @@ local baseButton = hotbarFrame:FindFirstChild("1").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "120% Red" -- put the name of the base move 1
+ToolName.Text = "Reversal Red: Repel" -- put the name of the base move 1
 
 
 local player = game.Players.LocalPlayer
@@ -33,7 +33,7 @@ local baseButton = hotbarFrame:FindFirstChild("2").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Attracted Beatdown" -- put the name of the base move 2
+ToolName.Text = "Ruthless Barrage" -- put the name of the base move 2
 
 
 local player = game.Players.LocalPlayer
@@ -51,7 +51,7 @@ local baseButton = hotbarFrame:FindFirstChild("3").Base
 local ToolName = baseButton.ToolName
 
 
-ToolName.Text = "Energized Impact" -- put the name of the base move 3
+ToolName.Text = "Black Flash" -- put the name of the base move 3
 
 
 local player = game.Players.LocalPlayer
@@ -93,7 +93,7 @@ local function findGuiAndSetText()
 
             if textLabel then
 
-                textLabel.Text = "MAXIMUM OUTPUT" -- put the name of the ult name ultimate text
+                textLabel.Text = "200%" -- put the name of the ult name ultimate text
 
             end
 
@@ -1103,3 +1103,85 @@ Anim:AdjustSpeed(1)
  
  
  
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local cooldown = false
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://13073745835" -- Replace with your animation ID
+
+-- Create a Tool
+local tool = Instance.new("Tool")
+tool.Name = "Phasing Blue"
+tool.RequiresHandle = false
+tool.Parent = player:WaitForChild("Backpack")
+
+-- Function to create the glass shatter effect
+local function createGlassShatterEffect()
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "GlassShatterEffect"
+    screenGui.Parent = player:WaitForChild("PlayerGui")
+
+    local shatterImage = Instance.new("ImageLabel")
+    shatterImage.Size = UDim2.new(1, 0, 1, 0)  -- Full screen
+    shatterImage.Position = UDim2.new(0, 0, 0, 0)
+    shatterImage.BackgroundTransparency = 1
+    shatterImage.Image = "rbxassetid://12795300851"  -- Glass shatter image ID
+    shatterImage.ImageTransparency = 0
+    shatterImage.Parent = screenGui
+
+    -- Fade out effect over 0.8 seconds
+    local fadeDuration = 0.8
+    local steps = 10  -- Number of steps in the fade
+    for i = 1, steps do
+        shatterImage.ImageTransparency = i / steps
+        wait(fadeDuration / steps)
+    end
+
+    screenGui:Destroy()  -- Remove the effect after fading out
+end
+
+-- Function to find the nearest player
+local function getNearestPlayer()
+    local nearestPlayer = nil
+    local shortestDistance = math.huge
+
+    for _, otherPlayer in pairs(game.Players:GetPlayers()) do
+        if otherPlayer ~= player and otherPlayer.Character then
+            local distance = (character.PrimaryPart.Position - otherPlayer.Character.PrimaryPart.Position).Magnitude
+            if distance < shortestDistance then
+                shortestDistance = distance
+                nearestPlayer = otherPlayer
+            end
+        end
+    end
+
+    return nearestPlayer
+end
+
+-- Function to teleport to the nearest player
+local function teleportToNearestPlayer()
+    if cooldown then return end
+    cooldown = true
+
+    -- Play the animation
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+
+    -- Find the nearest player and teleport
+    local nearestPlayer = getNearestPlayer()
+    if nearestPlayer and nearestPlayer.Character then
+        character:SetPrimaryPartCFrame(nearestPlayer.Character.PrimaryPart.CFrame)
+        createGlassShatterEffect()  -- Trigger the glass shatter effect
+    end
+
+    -- Start cooldown timer
+    wait(5)
+    cooldown = false
+end
+
+-- Connect tool activation to teleport function
+tool.Activated:Connect(function()
+    teleportToNearestPlayer()
+end)
