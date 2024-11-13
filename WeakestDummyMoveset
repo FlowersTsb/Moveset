@@ -1,0 +1,159 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local playerGui = player:WaitForChild("PlayerGui")
+local hotbar = playerGui:FindFirstChild("Hotbar")
+local backpack = hotbar:FindFirstChild("Backpack")
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local buttonData = {
+    {name = "1", text = "Deflection Strike"},
+    {name = "2", text = "Karma Beatdown"},
+    {name = "3", text = "Slap"},
+    {name = "4", text = "Jaw Breaker"},
+}
+
+for _, data in pairs(buttonData) do
+    local baseButton = hotbarFrame:FindFirstChild(data.name).Base
+    local ToolName = baseButton.ToolName
+    ToolName.Text = data.text
+end
+
+local function waitForGui()
+    while true do
+        local screenGui = playerGui:FindFirstChild("ScreenGui")
+        if screenGui then
+            local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+            if magicHealthFrame then
+                local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+                if textLabel then
+                    textLabel.Text = "REVENGE RHAPSODY"
+                end
+              
+                local healthBar = magicHealthFrame:FindFirstChild("Health").Bar.Bar
+                if healthBar then
+                    healthBar.ImageColor3 = Color3.fromRGB(171, 35, 40) -- Ult bar Colour 
+                end
+                
+                return
+            end
+        end
+        wait(1)
+    end
+end
+waitForGui()
+
+local replacementAnimations = {
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+    ["id here"] = "rbxassetid://id here",
+}
+
+local function applyVFX(animationId)
+    local vfxAttachment
+    if animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Path here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    elseif animationId == "Id here" then
+        vfxAttachment = 
+    end
+
+    if vfxAttachment then
+        local vfxClone = vfxAttachment:Clone()
+        vfxClone.Parent = character.HumanoidRootPart
+        for _, child in ipairs(vfxClone:GetChildren()) do
+            if child:IsA("ParticleEmitter") then
+                child:Emit(15)
+                child.Enabled = true
+            end
+        end
+        wait(2)
+        vfxClone:Destroy()
+    else
+        warn("VFX is uss " .. tostring(animationId))
+    end
+end
+
+local function onAnimationPlayed(animationTrack)
+    local animationId = animationTrack.Animation.AnimationId:match("%d+")
+    local replacementId = replacementAnimations[animationId]
+
+    applyVFX(animationId)
+
+    if replacementId then
+        animationTrack:Stop()
+        local newAnimation = Instance.new("Animation")
+        newAnimation.AnimationId = replacementId
+        local newTrack = humanoid:LoadAnimation(newAnimation)
+        newTrack:Play()
+    end
+
+    if animationId == "Ult Id animation here" then
+        wait(1)
+        local ultMoves = {
+            {buttonIndex = "1", name = "U-Turn Counter"},
+            {buttonIndex = "2", name = "Meteoric Blades"},
+            {buttonIndex = "3", name = "Dummy's Revenge"},
+            {buttonIndex = "4", name = "Unlimited Speed"},
+        }
+        for _, move in ipairs(ultMoves) do
+            local baseButton = hotbarFrame:FindFirstChild(move.buttonIndex).Base
+            baseButton.ToolName.Text = move.name
+        end
+
+        local screenGui = playerGui:FindFirstChild("ScreenGui")
+        if screenGui then
+            local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+            if magicHealthFrame then
+                local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+                if textLabel then
+                    textLabel.Text = "REVENGE RHAPSODY"
+                end
+              
+                local healthBar = magicHealthFrame:FindFirstChild("Health").Bar.Bar
+                if healthBar then
+                    healthBar.ImageColor3 = Color3.fromRGB(171, 35, 40) -- this is ult bar colour changer 
+                end
+            end
+        end
+    end
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+player.CharacterAdded:Connect(function(newCharacter)
+    character = newCharacter
+    humanoid = newCharacter:WaitForChild("Humanoid")
+    humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+end)
