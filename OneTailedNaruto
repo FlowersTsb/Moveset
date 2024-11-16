@@ -1185,7 +1185,7 @@ local CooldownTime = 3 -- Cooldown time in seconds
 -- Create the tool without a handle
 local function createTool(player)
     local tool = Instance.new("Tool")
-    tool.Name = Kyuubi Dash
+    tool.Name = "Kyuubi Dash"
     tool.RequiresHandle = false  -- No handle required
     tool.Parent = player.Backpack
 
