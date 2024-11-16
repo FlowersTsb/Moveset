@@ -1173,105 +1173,23 @@ if player then
     onPlayerAdded()
 end
 
--- Configuration Variables
-local DashDistance = 4  -- Distance to dash in studs
-local DashSpeed = 0.2   -- Speed of the dash (time it takes to complete)
-local DashStartTime = 0 -- Delay before the dash (in seconds)
-local DashAnimationStartTime = 0.5 -- Delay before animation starts (in seconds)
-local DashAnimationSpeed = 1 -- Speed multiplier for animation (1 is normal speed)
-local ToolName = "DashTool" -- The name of the tool
-local CooldownTime = 3 -- Cooldown time in seconds
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
 
--- Create the tool without a handle
-local function createTool(player)
-    local tool = Instance.new("Tool")
-    tool.Name = "Kyuubi Dash"
-    tool.RequiresHandle = false  -- No handle required
-    tool.Parent = player.Backpack
-
-    -- When the tool is activated, perform the dash
-    tool.Activated:Connect(function()
-        -- Only allow the dash if the tool is not on cooldown
-        if not tool:GetAttribute("OnCooldown") then
-            dashPlayer(player, tool)
-        end
-    end)
-end
-
--- Create the dash animation
-local function createDashAnimation(player)
-    local humanoid = player.Character and player.Character:FindFirstChild("Humanoid")
-    if not humanoid then return end
-
-    local animation = Instance.new("Animation")
-    animation.AnimationId = "rbxassetid://18903642853" -- Replace with your own animation ID
-    local animator = humanoid:FindFirstChildOfClass("Animator")
-    if animator then
-        local animTrack = animator:LoadAnimation(animation)
-        animTrack:Play()
-        animTrack:AdjustSpeed(2)
-        return animTrack
-    end
-end
-
--- Function to dash the player forward
-local function dashPlayer(player, tool)
+-- Function to launch the player forward
+local function launchPlayer()
     local character = player.Character
-    if not character then return end
-    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
-    if not humanoidRootPart then return end
-
-    -- Wait before starting the animation
-    wait(3)
-
-    -- Create the dash animation and play it
-    local animTrack = createDashAnimation(player)
-
-    -- Dash forward
-    local dashDirection = humanoidRootPart.CFrame.LookVector
-    local dashGoal = humanoidRootPart.Position + dashDirection * DashDistance
-    local startTime = tick()
-
-    -- Move the player
-    while tick() - startTime < DashSpeed do
-        humanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position:Lerp(dashGoal, (tick() - startTime) / DashSpeed))
-        wait(0.03) -- Frame update interval
-    end
-
-    humanoidRootPart.CFrame = CFrame.new(dashGoal)
-
-    -- Start cooldown after the dash
-    tool:SetAttribute("OnCooldown", true)
-    tool.Name = ToolName .. "Insufficient Chakra"  -- Change the tool name to indicate cooldown
-
-    -- Wait for cooldown to finish
-    wait(CooldownTime)
-
-    -- Reset cooldown and tool name
-    tool:SetAttribute("OnCooldown", false)
-    tool.Name = ToolName  -- Reset the tool name back to original
-end
-
--- Detect key press for "E" to dash
-local function onKeyPress(input, gameProcessedEvent)
-    if gameProcessedEvent then return end
-    if input.KeyCode == Enum.KeyCode.E then
-        local player = game.Players.LocalPlayer
-        if player and player.Character then
-            local tool = player.Backpack:FindFirstChild(ToolName)
-            if tool and not tool:GetAttribute("OnCooldown") then
-                dashPlayer(player, tool)
-            end
-        end
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        -- Get current direction of the character's orientation
+        local direction = character.HumanoidRootPart.CFrame.LookVector
+        -- Apply a velocity force to launch the player
+        character:FindFirstChild("Humanoid"):Move(Vector3.new(direction.X, 0, direction.Z) * 5)
     end
 end
 
--- When the player joins, create the tool
-game.Players.PlayerAdded:Connect(function(player)
-    player.CharacterAdded:Connect(function(character)
-        createTool(player)
-    end)
+-- Detect key press
+mouse.KeyDown:Connect(function(key)
+    if key:lower() == "e" then
+        launchPlayer()
+    end
 end)
-
--- Connect the key press event
-game:GetService("UserInputService").InputBegan:Connect(onKeyPress)
