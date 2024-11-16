@@ -951,3 +951,155 @@ onHumanoidChanged()
 
 humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(onHumanoidChanged)
 onHumanoidChanged()
+
+--[[ ult name changer made by Owner of Aztech ]]
+-- // DEATH COUNTER //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("Death Counter") or player.Character:FindFirstChild("Table Flip")
+
+    if tool then
+        tool.Name = "Chakra Blade" -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "Rock Splitting Strike" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
+
+-- // SERIOUS PUNCH //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("Water Stream Rock Smashing") or player.Character:FindFirstChild("Water Stream Rock Smashing")
+
+    if tool then
+        tool.Name = "Demonic Force" -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "Water Stream Rock Smashing" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
+
+-- // TABLE FLIP //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("The Final Hunt") or player.Character:FindFirstChild("The Final Hunt")
+
+    if tool then
+        tool.Name = "Ravaging Roar" -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "The Final Hunt" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
+
+-- // OMNI DIRECTIONAL PUNCH //
+local player = game.Players.LocalPlayer
+
+local function detectAndRenameTool()
+    local tool = player.Backpack:FindFirstChild("Crushed Rock") or player.Character:FindFirstChild("Crushed Rock")
+
+    if tool then
+        tool.Name = "Helping Tailed Beast" -- Change the ult name
+    end
+end
+
+player.CharacterAdded:Connect(function()
+    task.wait(1)
+    detectAndRenameTool()
+end)
+
+player.Backpack.ChildAdded:Connect(function(child)
+    if child.Name == "Crushed Rock" then
+        detectAndRenameTool()
+    end
+end)
+
+detectAndRenameTool()
+
+-- Services
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+-- Local Player
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- GUI and color adjustment function
+local function updateBarColor()
+    -- Find the ScreenGui on the screen
+    local screenGui = playerGui:FindFirstChild("ScreenGui")
+    if not screenGui then return end
+
+    -- Find the MagicHealth Frame
+    local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+    if not magicHealthFrame then return end
+
+    -- Find the Health Frame
+    local healthFrame = magicHealthFrame:FindFirstChild("Health")
+    if not healthFrame then return end
+
+    -- Find the Bar Frame
+    local barFrame = healthFrame:FindFirstChild("Bar")
+    if not barFrame then return end
+
+    -- Find the ImageLabel with ImageColor3 property inside the Bar Frame
+    local imageLabel = barFrame:FindFirstChild("Bar")
+    if not imageLabel or not imageLabel:IsA("ImageLabel") then return end
+
+    -- Set the color to yellow
+    imageLabel.ImageColor3 = Color3.fromRGB(255, 140, 0) -- Yellow
+end
+
+-- Check the GUI again when the character resets
+local function onCharacterAdded(character)
+    -- Update the GUI
+    updateBarColor()
+end
+
+-- Check the local player's character
+local function onPlayerAdded()
+    local character = player.Character or player.CharacterAdded:Wait()
+    onCharacterAdded(character)
+
+    -- Check again when the character changes
+    player.CharacterAdded:Connect(onCharacterAdded)
+end
+
+-- Check when the player is added
+Players.PlayerAdded:Connect(onPlayerAdded)
+if player then
+    onPlayerAdded()
+end
