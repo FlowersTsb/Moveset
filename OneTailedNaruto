@@ -110,7 +110,7 @@ playerGui.DescendantAdded:Connect(findGuiAndSetText)
 findGuiAndSetText()
 
 
-local animationId = 18716113810 -- the anim that will get track
+local animationId = 12273188754 -- the anim that will get track
 
 
 local player = game.Players.LocalPlayer
@@ -166,7 +166,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 18716033506 -- the move that it will track
+local animationId = 12309835105 -- the move that it will track
 
 
 local player = game.Players.LocalPlayer
@@ -223,7 +223,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 18716004830 -- the anim that will track
+local animationId = 12351854556 -- the anim that will track
 
 
 local player = game.Players.LocalPlayer
@@ -280,7 +280,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 18716022049 -- the specific anim that will get track
+local animationId = 12296113986 -- the specific anim that will get track
 
 
 local player = game.Players.LocalPlayer
@@ -334,7 +334,7 @@ end
 -- ult move 1
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
-local animationId = 18716169065 -- the anim will get track
+local animationId = 13813099821 -- the anim will get track
 
 
 local player = game.Players.LocalPlayer
@@ -485,7 +485,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(1.2)
+Anim:AdjustSpeed(1.5)
 
 
     end
@@ -498,9 +498,8 @@ end
 
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
-
-local animationId = 12447707844 -- the anim will get track
-
+local animationId = 12467789963 -- the anim will get track
+ 
 
 local player = game.Players.LocalPlayer
 
@@ -527,12 +526,12 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://18435303746" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://18903642853" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
 
-local startTime = 0 -- the specific anim
+local startTime = 3 -- the specific anim
 
 
 Anim:Play()
@@ -541,7 +540,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(1)
+Anim:AdjustSpeed(1.8)
 
     end
 
@@ -582,7 +581,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://14046756619" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://17838006839" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -596,7 +595,7 @@ Anim:AdjustSpeed(0)
 
 Anim.TimePosition = startTime
 
-Anim:AdjustSpeed(0.7)
+Anim:AdjustSpeed(0.9)
 
 
 delay(1.2, function()
@@ -920,15 +919,19 @@ player.CharacterAdded:Connect(function(newCharacter)
 end)
 
 -- Walk animation
-local walkAnimationId = "rbxassetid://14351868272"
+local walkAnimationId = "rbxassetid://15962326593"
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 local animator = humanoid:FindFirstChildOfClass("Animator") or humanoid:WaitForChild("Animator")
 
+local idleAnimation = Instance.new("Animation")
+idleAnimation.AnimationId = idleAnimationId
+local idleTrack = animator:LoadAnimation(idleAnimation)
+
 local walkAnimation = Instance.new("Animation")
-walkAnimation.AnimationId = 15962326593
+walkAnimation.AnimationId = walkAnimationId
 local walkTrack = animator:LoadAnimation(walkAnimation)
 
 local function onHumanoidChanged()
