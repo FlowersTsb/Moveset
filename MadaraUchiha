@@ -223,7 +223,7 @@ end
 humanoid.AnimationPlayed:Connect(onAnimationPlayed)
 
 
-local animationId = 14299135500 -- the anim that will track
+local animationId = 14967219354 -- the anim that will track
 
 
 local player = game.Players.LocalPlayer
