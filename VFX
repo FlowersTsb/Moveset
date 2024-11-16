@@ -64,7 +64,19 @@ local replacementAnimations = {
 local function applyVFX(animationId)
     local vfxAttachment
     if animationId == "18896124320" then
-        vfxAttachment = game.ReplicatedStorage.Resources.KJEffects.DropkickExtra.firstHit.Attachment
+        vfxAttachment = local Test = ((game.ReplicatedStorage.Resources.KJEffects.DropkickExtra.firstHit.Attachment))
+local test = Test:Clone()
+test.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+
+
+for _, child in ipairs(test:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+
+
+        child:Emit(15)
+        child.Enabled = true
+    end
+end
     elseif animationId == "Id here" then
         vfxAttachment = 
     elseif animationId == "Path here" then
