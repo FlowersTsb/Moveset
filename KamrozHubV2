@@ -27,4 +27,31 @@ Tab:AddButton({
   end    
 })
 
+Tab:AddButton({
+    Name = "ESP",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/ESPTracers",true))()
+  end    
+})
 
+
+local Tab = Window:MakeTab({
+    Name = "Netless KJ",
+    Icon = "rbxassetid://514102141",
+    PremiumOnly = false
+})
+
+Tab:AddButton({
+    Name = "Minos Prime",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/faQfsu6N"))()
+  end    
+})
+
+
+Tab:AddButton({
+    Name = "Chara",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/44aS7zEi"))()
+  end    
+})
