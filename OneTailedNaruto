@@ -1176,20 +1176,22 @@ end
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
 
--- Function to launch the player forward
-local function launchPlayer()
+-- Function to dash the player forward
+local function dashPlayer()
     local character = player.Character
     if character and character:FindFirstChild("HumanoidRootPart") then
-        -- Get current direction of the character's orientation
-        local direction = character.HumanoidRootPart.CFrame.LookVector
-        -- Apply a velocity force to launch the player
-        character:FindFirstChild("Humanoid"):Move(Vector3.new(direction.X, 0, direction.Z) * 5)
+        local humanoidRootPart = character.HumanoidRootPart
+        local direction = humanoidRootPart.CFrame.LookVector  -- Get the direction the character is facing
+
+        -- Move the character forward by 5 studs instantly (dash effect)
+        local newPosition = humanoidRootPart.Position + direction * 5
+        humanoidRootPart.CFrame = CFrame.new(newPosition)
     end
 end
 
--- Detect key press
+-- Detect key press (checking for uppercase 'E')
 mouse.KeyDown:Connect(function(key)
-    if key:lower() == "e" then
-        launchPlayer()
+    if key == "E" then
+        dashPlayer()
     end
 end)
