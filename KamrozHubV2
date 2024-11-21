@@ -106,3 +106,29 @@ Tab:AddButton({
       	    loadstring(game:HttpGet("https://pastebin.com/raw/xKextYP5"))()
   	end    
 })
+
+
+Tab:AddButton({
+	Name = "Yuta",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/damir512/AtomicToYuta/main/Protected_8122576078506000.txt"))()
+  	end    
+})
+
+
+-- Button Here
+
+
+local Tab = Window:MakeTab({
+	Name = "Debug",
+	Icon = "rbxassetid://",
+	PremiumOnly = false
+})
+
+
+Tab:AddButton({
+	Name = "Yuta VFX Debug",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/YutaVFXDebug",true))()
+  	end    
+})
