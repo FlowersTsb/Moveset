@@ -36,7 +36,7 @@ Tab:AddButton({
 
 
 local Tab = Window:MakeTab({
-    Name = "Netless KJ",
+    Name = "Movesets",
     Icon = "rbxassetid://514102141",
     PremiumOnly = false
 })
@@ -54,4 +54,44 @@ Tab:AddButton({
     Callback = function()
         loadstring(game:HttpGet("https://pastebin.com/raw/44aS7zEi"))()
   end    
+})
+
+
+Tab:AddButton({
+    Name = "Oblivion Gourd",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/invertedth/OblivionGourd/refs/heads/main/Dabestscirpt"))() 
+  end    
+})
+
+
+Tab:AddButton({
+	Name = "Jotaro",
+	Callback = function()
+      	loadstring(game:HttpGet("https://raw.githubusercontent.com/DuckTheSecond/JotaroV1/refs/heads/main/Official",true))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Okarun (VEUX copied this script idea from me)",
+	Callback = function()
+      	loadstring(game:HttpGet("https://pastebin.com/raw/mDKrnqxN"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "JJS Gojo",
+	Callback = function()
+      	loadstring(game:HttpGet("https://gist.githubusercontent.com/JcBoomin/a63e9ac3e90cef03ecf37e997fd21632/raw/98b567b81f61bb30042e0078b78f3fb24685fb8d/Gojo",true))()
+  	end    
+
+
+Tab:AddButton({
+	Name = "Gojo",
+	Callback = function()
+      	loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/BaldyToSorcerer/main/Latest.lua"))()
+  	end    
+})
 })
