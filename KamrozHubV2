@@ -88,10 +88,21 @@ Tab:AddButton({
   	end    
 
 
+
+})
+
+
 Tab:AddButton({
 	Name = "Gojo",
 	Callback = function()
       	loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/BaldyToSorcerer/main/Latest.lua"))()
   	end    
 })
+
+
+Tab:AddButton({
+	Name = "Vigilante Deku",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://pastebin.com/raw/xKextYP5"))()
+  	end    
 })
