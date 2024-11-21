@@ -116,7 +116,12 @@ Tab:AddButton({
 })
 
 
--- Button Here
+Tab:AddButton({
+	Name = "Yuji",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/HamletYuji",true))()
+  	end    
+})
 
 
 local Tab = Window:MakeTab({
