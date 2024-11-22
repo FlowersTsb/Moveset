@@ -245,9 +245,3 @@ Tab:AddButton({
 })
 
 
-Tab:AddButton({
-	Name = "Unlimited Flexworks",
-	Callback = function()
-      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/Gokou300/Gokou300/refs/heads/main/cxdF311o0C9hXk9enlY9870mxPy3TQ4AEJb8qpV3YEmD6miuJsInzGxP97M3b9L8%20KJS_UNLIMTED_FLEX_WORKS.lua"))()
-  	end    
-})
