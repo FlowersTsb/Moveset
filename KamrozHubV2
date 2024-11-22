@@ -12,7 +12,7 @@ print("Successfully executed.") -- Just a debug
 
 local Tab = Window:MakeTab({
     Name = "Exploits",
-    Icon = "rbxassetid://514102141",
+    Icon = "rbxassetid://18995898434",
     PremiumOnly = false
 })
 
@@ -37,7 +37,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "Movesets",
-    Icon = "rbxassetid://514102141",
+    Icon = "rbxassetid://514102139",
     PremiumOnly = false
 })
 
@@ -126,7 +126,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "Debug",
-	Icon = "rbxassetid://",
+	Icon = "rbxassetid://15506782930",
 	PremiumOnly = false
 })
 
