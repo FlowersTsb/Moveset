@@ -124,6 +124,89 @@ Tab:AddButton({
 })
 
 
+Tab:AddButton({
+	Name = "Redesign",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/main/REDSIGN.lua"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Apophenia",
+	Callback = function()
+      	    getgenv().Music = false
+--Setting this to false usually fixes most executors
+--also it helps load time a little bit
+getgenv().AttackQuality = 'High'
+--Set to Low,High
+
+ getgenv().ConstantSpeed = false
+--if you want your speed to be constant
+--Set to Low,High
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/main/APOPHENIA.lua"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Arcaura",
+	Callback = function()
+      	    getgenv().OptimizeUltimate = true
+--self explanatory
+getgenv().ReduceUltFlash = true
+--self explanatory
+getgenv().Move1Insta = false
+--set it to false if you dont want the first move to instant kill
+getgenv().LowQualityMode = true
+--set to true if you have a shit pc (like me)
+getgenv().BetaConsole = true
+--its a console menu so you can modify each settings whenever you want
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/refs/heads/main/ARCAURA.lua"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Volta",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/refs/heads/main/VOLTA.lua"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Hakari (check character list)",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/damir512/hakari/main/Protected_5980408162046394.txt"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Kashimo",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/damir512/Kashimo/main/Protected_7491278457865044.txt"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Sukuna",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/Nova2ezz/Sukuna/refs/heads/main/KenjakuTsbOnYt"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Todo",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://gist.githubusercontent.com/JcBoomin/758a239205f8316102f63dc8c8863102/raw/48139b0ed7e2bc7f8088596a40f3327c645b8242/gistfile1.txt",true))()
+  	end    
+})
+
+
 local Tab = Window:MakeTab({
 	Name = "Debug",
 	Icon = "rbxassetid://15506782930",
@@ -135,5 +218,20 @@ Tab:AddButton({
 	Name = "Yuta VFX Debug",
 	Callback = function()
       	    loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/YutaVFXDebug",true))()
+  	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Tools",
+	Icon = "rbxassetid://121453167",
+	PremiumOnly = false
+})
+
+
+Tab:AddButton({
+	Name = "Sharingan ESP (Tracers are broken)",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/SharinganTool",true))()
   	end    
 })
