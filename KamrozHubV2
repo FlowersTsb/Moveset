@@ -215,6 +215,38 @@ Tab:AddButton({
 })
 
 
+Tab:AddButton({
+	Name = "Toji",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/Giahao135/Tojifushiguro/refs/heads/main/Togiiiii"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Kyra Toji",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://paste.ee/r/0uIxM"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "A-Train",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://paste.ee/r/AnZ5j"))()
+  	end    
+})
+
+
+Tab:AddButton({
+	Name = "Shinjuku Yuji",
+	Callback = function()
+      	    loadstring(game:HttpGet('https://raw.githubusercontent.com/Kenjihin69/Kenjihin69/refs/heads/main/Yuji%20early%20access'))()
+  	end    
+})
+
+
 local Tab = Window:MakeTab({
 	Name = "Debug",
 	Icon = "rbxassetid://15506782930",
