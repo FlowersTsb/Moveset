@@ -16,6 +16,6 @@ if rightArm then
     weld.Parent = sfx
 
     local no = Instance.new("SpecialMesh", sfx)
-    no.MeshId = "rbxassetid://9159134872"
+    no.MeshId = "rbxassetid://5054662615"
     no.Scale = Vector3.new(0.015, 0.03, 0.015)
 end
