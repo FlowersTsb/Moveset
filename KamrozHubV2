@@ -247,6 +247,21 @@ Tab:AddButton({
 })
 
 
+Tab:AddButton({
+	Name = "Floating Girl",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/TSB/refs/heads/main/FLOATING_GIRL.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Sukuna 2, use garou",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/damir512/sukunaongarou/main/Protected_7222200088522532.txt",true))()
+  	end    
+})
+
+
 local Tab = Window:MakeTab({
 	Name = "Debug",
 	Icon = "rbxassetid://15506782930",
