@@ -304,3 +304,11 @@ Tab:AddButton({
       	    loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/LegendsOfSpeed",true))()
   	end    
 })
+
+
+Tab:AddButton({
+	Name = "Generic Roplay Gaem",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Generic_Roleplay_Gaem/RiceAutoFarm.lua", true))()
+  	end    
+})
