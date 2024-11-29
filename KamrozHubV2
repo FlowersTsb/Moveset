@@ -11,7 +11,7 @@ local Window = OrionLib:MakeWindow({
 print("Successfully executed.") -- Just a debug
 
 local Tab = Window:MakeTab({
-    Name = "Exploits",
+    Name = "Universal",
     Icon = "rbxassetid://18995898434",
     PremiumOnly = false
 })
@@ -289,6 +289,18 @@ Tab:AddButton({
 	Callback = function()
       	    loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/SharinganTool",true))()
   	end    
+
+
+local Tab = Window:MakeTab({
+	Name = "Other Games",
+	Icon = "rbxassetid://9676276904",
+	PremiumOnly = false
 })
 
 
+Tab:AddButton({
+	Name = "Legends Of Speed",
+	Callback = function()
+      	    loadstring(game:HttpGet("https://raw.githubusercontent.com/FlowersTsb/Moveset/refs/heads/main/LegendsOfSpeed",true))()
+  	end    
+})
