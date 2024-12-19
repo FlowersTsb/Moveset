@@ -1,0 +1,85 @@
+-- Services
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+-- Constants
+local DIMENSION_POSITION = Vector3.new(100000, 500, 100000) -- 100k studs away
+local IMAGE_ID = "rbxassetid://99283216497149" -- Replace with the image asset ID
+
+-- Create Dimension
+local dimensionFolder = Instance.new("Folder")
+dimensionFolder.Name = "Dimension"
+dimensionFolder.Parent = workspace
+
+-- Base Platform
+local basePlatform = Instance.new("Part")
+basePlatform.Size = Vector3.new(500, 1, 500)
+basePlatform.Position = DIMENSION_POSITION
+basePlatform.Anchored = true
+basePlatform.BrickColor = BrickColor.new("Bright blue")
+basePlatform.Parent = dimensionFolder
+
+-- Random Blocks
+for i = 1, 100 do
+    local block = Instance.new("Part")
+    block.Size = Vector3.new(10, math.random(10, 100), 10)
+    block.Position = DIMENSION_POSITION + Vector3.new(math.random(-200, 200), block.Size.Y / 2, math.random(-200, 200))
+    block.Anchored = true
+    block.BrickColor = BrickColor.new("Bright blue")
+    block.Parent = dimensionFolder
+end
+
+-- Teleport Function
+local playerPositions = {} -- To store players' original positions
+
+local function teleportToDimension(player)
+    if not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
+
+    local humanoidRootPart = player.Character.HumanoidRootPart
+
+    if not playerPositions[player] then
+        -- Store original position
+        playerPositions[player] = humanoidRootPart.Position
+
+        -- Display Image
+        local gui = Instance.new("ScreenGui")
+        gui.Name = "TeleportGui"
+        gui.Parent = player:WaitForChild("PlayerGui")
+
+        local imageLabel = Instance.new("ImageLabel")
+        imageLabel.Size = UDim2.new(0, 300, 0, 300)
+        imageLabel.Position = UDim2.new(0.5, -150, 0.5, -150)
+        imageLabel.Image = IMAGE_ID
+        imageLabel.BackgroundTransparency = 1
+        imageLabel.Parent = gui
+
+        -- Teleport after 5 seconds
+        task.delay(5, function()
+            if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                humanoidRootPart.CFrame = CFrame.new(DIMENSION_POSITION + Vector3.new(0, 10, 0))
+            end
+            gui:Destroy()
+        end)
+    else
+        -- Return to original position
+        local originalPosition = playerPositions[player]
+        if originalPosition then
+            humanoidRootPart.CFrame = CFrame.new(originalPosition)
+            playerPositions[player] = nil -- Clear stored position
+        end
+    end
+end
+
+-- Key Detection
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        local userInput = player:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule").GetControls()
+
+        userInput.InputBegan:Connect(function(input, gameProcessed)
+            if gameProcessed then return end
+            if input.KeyCode == Enum.KeyCode.E then
+                teleportToDimension(player)
+            end
+        end)
+    end)
+end)
