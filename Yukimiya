@@ -811,7 +811,7 @@ local animationIdsToStop = {
 
     [10469639222] = true,
 
-    [10469643643] = true,
+    [10469643643] = false,
 
 }
 
@@ -1109,7 +1109,7 @@ local function updateBarColor()
     if not imageLabel or not imageLabel:IsA("ImageLabel") then return end
 
     -- Set the color to yellow
-    imageLabel.ImageColor3 = Color3.fromRGB(255, 103, 61) -- Yellow
+    imageLabel.ImageColor3 = Color3.fromRGB(255, 161, 61)
 end
 
 -- Check the GUI again when the character resets
