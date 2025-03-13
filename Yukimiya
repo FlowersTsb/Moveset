@@ -644,7 +644,7 @@ end
 
 local AnimAnim = Instance.new("Animation")
 
-AnimAnim.AnimationId = "rbxassetid://18716481342" -- the specific anim
+AnimAnim.AnimationId = "rbxassetid://0" -- the specific anim
 
 local Anim = Humanoid:LoadAnimation(AnimAnim)
 
@@ -1104,7 +1104,7 @@ local function updateBarColor()
     if not imageLabel or not imageLabel:IsA("ImageLabel") then return end
 
     -- Set the color to yellow
-    imageLabel.ImageColor3 = Color3.fromRGB(255, 161, 61)
+    imageLabel.ImageColor3 = Color3.fromRGB(255,188,61)
 end
 
 -- Check the GUI again when the character resets
