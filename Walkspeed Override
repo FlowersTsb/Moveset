@@ -1,0 +1,176 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Debris = game:GetService("Debris")
+
+local player = Players.LocalPlayer
+
+-- CONFIG
+local TOOL_NAME = "Walkspeed Override"
+local LUNGE_DURATION = 3
+local LUNGE_SPEED = 75
+local COOLDOWN = 20
+
+local LUNGE_ANIM_ID = "rbxassetid://0"  -- your lunge animation (optional)
+local HIT_PLAYER_ANIM_ID = "rbxassetid://107079215" -- R6 /e point
+local HIT_OBJECT_ANIM_ID = "rbxassetid://0"
+local MISS_ANIM_ID = "rbxassetid://0"
+
+-- Sound IDs
+local LUNGE_SOUND_ID = "rbxassetid://129911400031350"
+local MISS_SOUND_ID = "rbxassetid://108996782884557"
+local HIT_WALL_SOUND_ID = "rbxassetid://130710880521053"
+local HIT_PLAYER_SOUNDS = {
+	"rbxassetid://85596665568206",
+	"rbxassetid://91083617216345"
+}
+
+-- CREATE TOOL WITH HANDLE
+local function createTool()
+	local tool = Instance.new("Tool")
+	tool.Name = TOOL_NAME
+	tool.RequiresHandle = true
+	tool.CanBeDropped = false
+
+	local handle = Instance.new("Part")
+	handle.Name = "Handle"
+	handle.Size = Vector3.new(1, 1, 1)
+	handle.Transparency = 1
+	handle.CanCollide = false
+	handle.Anchored = false
+	handle.Parent = tool
+
+	return tool
+end
+
+local tool = createTool()
+tool.Parent = player:WaitForChild("Backpack")
+
+local Ready = true
+
+local function loadAnimation(animator, animId, parent)
+	local anim = Instance.new("Animation")
+	anim.AnimationId = animId
+	if parent then anim.Parent = parent end
+	return animator:LoadAnimation(anim), anim
+end
+
+local function playSound(soundId, parent, duration)
+	local sound = Instance.new("Sound")
+	sound.SoundId = soundId
+	sound.Volume = 1
+	sound.Parent = parent
+	sound:Play()
+	Debris:AddItem(sound, duration or 2)
+end
+
+tool.Activated:Connect(function()
+	if not Ready then return end
+	Ready = false
+
+	local char = player.Character or player.CharacterAdded:Wait()
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	local root = char:FindFirstChild("HumanoidRootPart")
+	if not (hum and root) then
+		Ready = true
+		return
+	end
+
+	local animator = hum:FindFirstChildOfClass("Animator")
+	if not animator then
+		animator = Instance.new("Animator")
+		animator.Parent = hum
+	end
+
+	-- Optional lunge animation
+	if LUNGE_ANIM_ID ~= "rbxassetid://0" then
+		local lungeTrack = loadAnimation(animator, LUNGE_ANIM_ID)
+		lungeTrack:Play()
+	end
+
+	-- Play lunge sound
+	playSound(LUNGE_SOUND_ID, root, LUNGE_DURATION + 1)
+
+	local direction = root.CFrame.LookVector
+	local hit = false
+
+	hum:ChangeState(Enum.HumanoidStateType.Physics)
+
+	local hitbox = Instance.new("Part")
+	hitbox.Size = Vector3.new(4, 5, 6)
+	hitbox.Anchored = true
+	hitbox.CanCollide = false
+	hitbox.Transparency = 1
+	hitbox.Parent = workspace
+	Debris:AddItem(hitbox, LUNGE_DURATION)
+
+	local startTime = tick()
+	local connection
+
+	connection = RunService.RenderStepped:Connect(function(dt)
+		local elapsed = tick() - startTime
+		if elapsed >= LUNGE_DURATION then
+			connection:Disconnect()
+			hitbox:Destroy()
+			hum:ChangeState(Enum.HumanoidStateType.GettingUp)
+
+			if not hit then
+				if MISS_ANIM_ID ~= "rbxassetid://0" then
+					local missTrack = loadAnimation(animator, MISS_ANIM_ID)
+					missTrack:Play()
+				end
+				playSound(MISS_SOUND_ID, root)
+			end
+			return
+		end
+
+		root.CFrame = root.CFrame + direction * (LUNGE_SPEED * dt)
+		hitbox.CFrame = root.CFrame * CFrame.new(0, 0, -2)
+
+		for _, part in pairs(workspace:GetPartsInPart(hitbox)) do
+			if part:IsDescendantOf(char) then continue end
+
+			local model = part:FindFirstAncestorOfClass("Model")
+			local otherHum = model and model:FindFirstChildOfClass("Humanoid")
+
+			if model and otherHum and otherHum.Health > 0 then
+				hit = true
+				connection:Disconnect()
+				hitbox:Destroy()
+				hum:ChangeState(Enum.HumanoidStateType.GettingUp)
+
+				-- Play animation
+				local pointTrack = loadAnimation(animator, HIT_PLAYER_ANIM_ID, hum)
+				pointTrack:Play()
+
+				-- Play randomized hit-player sound
+				local soundId = HIT_PLAYER_SOUNDS[math.random(1, #HIT_PLAYER_SOUNDS)]
+				playSound(soundId, root)
+
+				task.delay(1, function()
+					pointTrack:Stop()
+				end)
+				break
+			elseif part.CanCollide then
+				hit = true
+				connection:Disconnect()
+				hitbox:Destroy()
+				hum:ChangeState(Enum.HumanoidStateType.GettingUp)
+
+				local hitObjTrack = loadAnimation(animator, HIT_OBJECT_ANIM_ID)
+				hitObjTrack:Play()
+				playSound(HIT_WALL_SOUND_ID, root)
+				break
+			end
+		end
+	end)
+
+	-- Cooldown countdown
+	task.spawn(function()
+		for i = COOLDOWN, 1, -1 do
+			tool.Name = tostring(i)
+			task.wait(1)
+		end
+		tool.Name = TOOL_NAME
+		Ready = true
+	end)
+end)
